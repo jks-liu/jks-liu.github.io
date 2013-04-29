@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Welcome
+tagline: CC BY-SA
 ---
 {% include JB/setup %}
 
