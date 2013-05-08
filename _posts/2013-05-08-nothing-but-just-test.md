@@ -24,12 +24,15 @@ svg picture does not be supported!
             (cond ((eq? command 'car) first)
                   ((eq? command 'cdr) second)))))
     dispatch))
+{% endhighlight %}
+
+```scheme
 (define (car c)
   (c 'car))
 (define (cdr c)
   (c 'cdr))
-{% endhighlight %}
-                   
+```
+
 ## Test MathJax
 $$E = mc^2$$
 
