@@ -20,7 +20,7 @@ tagline: WELCOME
 - Win7 WinXp
 
 ### Posts: 
-{% for post in site.posts %}
+{% for post in site.posts reversed %}
 ####   [{{post.title}}]({{site.url}}{{post.url}})
 {% endfor %}
 
