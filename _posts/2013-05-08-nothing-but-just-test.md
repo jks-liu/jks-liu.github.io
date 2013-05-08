@@ -30,7 +30,11 @@ svg picture does not be supported!
   (c 'cdr))
 {% endhighlight %}
                    
-## test latex
+## Test MathJax
 $$E = mc^2$$
+
+\\\[ E = mc^2 \\\]
+
+My favorite: \\\( E = mc^2 \\\) .
 
 

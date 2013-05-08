@@ -16,7 +16,7 @@ tagline: WELCOME
 - C C++, Emacs lisp, Racket
 
 #### Which OS I use
-- Linux/Ubuntu RedHat,
+- Linux/Ubuntu RedHat
 - Win7 WinXp
 
 ### Posts: 
