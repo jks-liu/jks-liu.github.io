@@ -13,7 +13,7 @@ tags: []
 png OK.
 
 ## Test svg picture
-![test svg](/pictures/test.svg?raw=true)   
+![test svg](/pictures/test.svg)   
 svg picture does not be supported!
 
 ## Test Pgyments

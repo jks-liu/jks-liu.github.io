@@ -146,7 +146,7 @@ A softwar is list here dose not mean I like it, maybe just because my company us
 
 ## Extension
 - Chrome
-  + ~~AdBlock~~
+  + AdBlock: Replaced by Abblock Plus
   + Adblock Plus
   + Dualx: QQ
   + Feedly: RSS
@@ -163,13 +163,13 @@ A softwar is list here dose not mean I like it, maybe just because my company us
   + RefTex
   + artist-mode
   + org-mode
-    * [[https://github.com/punchagan/org2blog][org2blog]]
-      - [[https://launchpad.net/xml-rpc-el][xmlrpc]]
-    * [[https://github.com/renard/o-blog][o-blog]] **
-    * (ditaa)
-    * (graphviz)
+    * [org2blog](https://github.com/punchagan/org2blog)
+      - [xmlrpc](https://launchpad.net/xml-rpc-el)
+    * [o-blog](https://github.com/renard/o-blog)
+    * ditaa
+    * graphviz
     * htmlize
-  + [[https://github.com/dimitri/el-get][el-get]]
+  + [el-get](https://github.com/dimitri/el-get)
   + git-emacs
 
 ## Website
