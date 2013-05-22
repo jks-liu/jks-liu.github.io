@@ -59,6 +59,8 @@ A softwar is list here dose not mean I like it, maybe just because my company us
 - Editor
   + Emacs
   + Latex
+  + Jabref: an open source bibliography reference manager
+  + TeXmacs
   + Source Insight
   + Vi: vim vi gvim
 - Builder
@@ -78,6 +80,9 @@ A softwar is list here dose not mean I like it, maybe just because my company us
   + prolog
   + mspdebug
   + gdb
+  + [Icarus Verilog](http://iverilog.icarus.com/): a Verilog simulation and synthesis tool
+  + Chez Scheme: Is said to be the fastest compiler
+  + CodeSourcery
 - IDE
   + Arduino
   + Processing
@@ -113,6 +118,9 @@ A softwar is list here dose not mean I like it, maybe just because my company us
   + ditaa
   + graphviz  
   + dot
+  + [pencil](http://pencil.evolus.vn/): GUI prototyping tool
+  + [pencil-animation](www.pencil-animation.org)
+  + [Inkscape](http://inkscape.org/): An Open Source vector graphics editor
 - IM
   + IRC
   + QQ
@@ -171,6 +179,8 @@ A softwar is list here dose not mean I like it, maybe just because my company us
     * htmlize
   + [el-get](https://github.com/dimitri/el-get)
   + git-emacs
+- Firefox
+  + [pencil](http://pencil.evolus.vn/): GUI prototyping tool 
 
 ## Website
 - [Github](https://github.com/)
