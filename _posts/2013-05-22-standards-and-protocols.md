@@ -55,11 +55,26 @@ Maybe [semantic version](http://semver.org/) is what I want.
 
 So, I typed `$ git tag v1.0.0+1 -a -m "Using semver"`, 
 and echo these to my README.md:
-{% highlight markdown %}
-## About Version
-This work will be compatible with [semantic version](http://semver.org/).
-{% endhighlight %}
+
+    ## About Version
+    This work will be compatible with [semantic version](http://semver.org/).
 
 ### RFC2119
-"What is `will'?"
+"What is \`will'? Shall? Should? or Must?"
+
+It's complicated for me who see English as a second language.
+
+Just like semantic version, I add these to my readme:
+
+    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY",
+    and "OPTIONAL" in this document are to be interpreted as described
+    in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+
+And change version statement to:
+
+    ## About Version
+    This work SHALL be compatible with [semantic version](http://semver.org/).
+
+
 
