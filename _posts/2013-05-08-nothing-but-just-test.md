@@ -14,7 +14,7 @@ png OK.
 
 ## Test svg picture
 ![test svg](/pictures/test.svg)   
-svg picture does not be supported!
+svg picture does not be supported in localhost but in github page!
 
 ## Test Pgyments
 {% highlight scheme %}
