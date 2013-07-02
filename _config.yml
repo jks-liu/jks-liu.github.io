@@ -83,7 +83,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jksliu
+      short_name : jks-liu
     livefyre :
       site_id : 123
     intensedebate :

@@ -76,5 +76,20 @@ And change version statement to:
     ## About Version
     This work SHALL be compatible with [semantic version](http://semver.org/).
 
+### ............
+What should I do next? Maybe a coding style document is REQUIRED.
+
+- How do you name you variable?
+- Which charactors do you used for your indent?
+- How to document you code?
+- Which license will your source and document under?
+- I think I will be crazing.
+
+## Protocols
+### What is protocols?
+Everything
+
+Human beings are what make protocols more complicated.
+
 
 
