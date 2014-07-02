@@ -73,7 +73,28 @@ int main(void) {
 
 你可以在[LCD1602@GitHub][GitHub LCD1602]下载完整的驱动程序代码；软件框架可以在[SCM Software Architecture@GitHub][GitHub SCM Software Architecture]下载。
 
-首先新建两个文件：lcd1602.c和lcd1602.h。
+首先新建两个文件：[LCD1602.c]和[LCD1602.h]（点击查看完整内容）。
+
+在`LCD1602.h`中，首先找到下面这一句：
+{% highlight c %}
+#include "software-config.h"
+{% endhighlight %}
+
+由于我们要让这个驱动库在所有的硬件框架下可用，所以我们没有包含特定于任何芯片的头文件，比如`reg51.h`。我们包含了一个`software-config.h`，库的使用者有责任创建这个头文件，我们把这当作库的作者和使用者的一个约定就好。
+
+但是，让用户去实现这个`software-config.h`，就相当于把复杂性强加给了用户，所以我们在上面提供了一个框架代码。这个框架为常见的单片机提供模板，以使编写`software-config.h`更加容易。
+
+一般来说和硬件有关的配置是将某一个GPIO置位或复位，对于不同的单片机，语法一般是不一样的。对于驱动的编写者，我们可以为每一个单片机都编写一遍代码，也可以将这个问题抛给用户，用户只需对其特定的单片机编写代码。从用户方便的角度来讲，驱动的作者完成所有的工作当然是最好的，但这几乎是不现实的，因为驱动作者不可能熟悉每中单片机，更何况每种单片机在不同的编译器下语法也是不一样的。所以，只给常见单片机和和常见编译器编写算是一个折中。
+
+LCD1602液晶显示器一般使用HD44780驱动芯片，此芯片支持8位和4位数据总线。所以我们的驱动程序也支持这两种模式。使用何种模式在`software-config.h`中配置。对于这种二选一的配置，一般有两种方法。
+
+1. 两个define二选一
+要求在`software-config.h`中在`#define HD44780_USE_8BIT`和`#define HD44780_USE_8BIT`这两个宏定义中二选一。
+
+2. 有一个默认值
+当什么都没有定义的时候，默认使用8位模式。如果定义了`HD44780_USE_4BIT`，则使用4位的总线模式。
+
+这两种方法各有优缺点，方法2相对来说比较简单，
 
 
 
@@ -81,4 +102,5 @@ int main(void) {
 
 [GitHub LCD1602]: https://github.com/jks-liu/LCD1602 "LCD1602" 
 [GitHub SCM Software Architecture]: https://github.com/jks-liu/SCM-Software-Architecture "SCM Software Architecture"
-
+[LCD1602.c]: https://github.com/jks-liu/LCD1602/blob/master/LCD1602.c "LCD1602.c"
+[LCD1602.h]: https://github.com/jks-liu/LCD1602/blob/master/LCD1602.h "LCD1602.h"
