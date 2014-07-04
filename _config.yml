@@ -125,3 +125,7 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
+
+# Migrating Pages site from Maruku
+# See: https://help.github.com/articles/migrating-your-pages-site-from-maruku
+markdown: kramdown
