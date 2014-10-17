@@ -7,21 +7,21 @@ tags: [reading, notes]
 ---
 {% include JB/setup %}
 
-## 16 Oct
+## 16 Oct {#oct16}
 
-### 1. 什么样的软件值得信任
+### I. 什么样的软件值得信任 {#Reflections-on-Trusting-Trust}
 原文：[Reflections on Trusting Trust](http://cm.bell-labs.com/who/ken/trust.html)
 
 作者：Ken Thomps
 
 本文通过self-reproducing程序引出编译器中的一种bug，通过某种方式可以让这个bug一直留在编译器中，即使我们在源代码中已经修改了这个错误。
 
-所以，某个程序即使开放了源代码，也不应该完全信任它。除非其完全由你自己从头创建，包括其所有的构建工具，即构建工具的构建工具，而在现实中这几乎是不可能的。
+所以，某个程序即使开放了源代码，也不应该完全信任它。除非其完全由你自己从头创建，包括其所有的构建工具，以及构建工具的构建工具，而在现实中这几乎是不可能的。
 
 
-## 17 Oct
+## 17 Oct {#oct17}
 
-### 1. 构建Web应用
+### II. 构建Web应用 {#The-Twelve-Factor-App}
 原文：[The Twelve-Factor App](http://12factor.net/)
 
 The twelve-factor app是一个构建SaaS（即Web应用）的方法论。
@@ -41,7 +41,7 @@ The twelve-factor app是一个构建SaaS（即Web应用）的方法论。
 * 进程是一等公民
 * 进程可以随时的开启和关闭
 * 进程的开启时间应该尽量的短
-* 进程应当在接受到SIGTERM时优雅地关闭
+* 进程应当在接受到`SIGTERM`时应该优雅地关闭
 * 进程应当是健壮的，并努力避免突然的关闭
 * 开发和产品之间的差距应尽可能地小，以使得应用是可持续部署的
 * 反对在开发和产品中使用不同的后端服务
