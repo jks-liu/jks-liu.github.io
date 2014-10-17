@@ -1,27 +1,16 @@
 ---
 layout: page
-title: Jks PhiloSophy
-tagline: WELCOME
+title: 刘氏博客
+tagline: 简体中文站
 ---
 
-#### Who I am
-- A Chinese
-- A programmer
 
-#### Who I am not
-- A computer repairman
-
-#### Which language I use
-- Chinese, English
-- C C++, Emacs lisp, Racket
-
-#### Which OS I use
-- Linux/Ubuntu RedHat
-- Win7 WinXp
-
-### Posts: 
+## 发布列表： 
 {% for post in site.posts %}
-####   [{{post.title}}]({{site.url}}{{post.url}})
+###   [{{post.title}}]({{site.url}}{{post.url}})
 {% endfor %}
 
+## 关于我
+
+在[GitHub](https://github.com/jks-liu/jks-liu.github.io)联系我。
 
