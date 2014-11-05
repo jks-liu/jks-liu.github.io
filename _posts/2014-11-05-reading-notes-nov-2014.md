@@ -15,6 +15,7 @@ tags: [reading, notes]
 我在使用Raspberry Pi的时候发现TeX Live的CTAN宏包版本都比较旧，并且软件源中也没有tlmgr工具，所以使用有些宏包时需要手动安装。
 
 安装目录：
+
 * 所有用户：使用`kpsewhich -var-value TEXMFLOCAL`可以得到为整个系统安装的路径，一般为`/usr/local/share/texmf`。
 * 当前用户，使用`kpsewhich -var-value TEXMFHOME`可以得到为当前用户安装的路径，一般为`~/texmf`。
 * 上面的路径我们称为`<base dir>`。
