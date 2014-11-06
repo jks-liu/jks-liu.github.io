@@ -21,3 +21,73 @@ tags: [reading, notes]
 * 上面的路径我们称为`<base dir>`。
 
 将下载的宏包解压到`<base dir>/tex/latex/`目录中，此时在`<base dir>/tex/latex/<package name>`目录中应该是相应的`.sty`和`.cls`文件；可选地，文档解压到`<base dir>/doc/latex/`。然后执行`mktexlsr`，为所有用户安装时需要`sudo`权限。
+
+## 06 Nov {#nov06}
+
+### II. 在树莓派上WHEEZY上安装GCC 4.8
+原文：[GCC 4.8 ON RASPBERRY PI WHEEZY](http://somewideopenspace.wordpress.com/2014/02/28/gcc-4-8-on-raspberry-pi-wheezy/)
+
+树莓派当前源中的软件一般都比较旧，所以如果要使用较新版本的软件的话需要从测试版仓库中安装。目前，稳定版仓库代号叫WHEEZY，测试版仓库代号是JESSIE。我们可以将`/etc/apt/sources.list`中的`wheezy`全部改为`jessie`；也可以同时保留两个，然后再安装的时候选择。如保留两个，大致流程如下：
+
+编辑`/etc/apt/sources.list`：
+
+```
+deb http://mirrordirector.raspbian.org/raspbian/ wheezy main contrib non-free rpi
+deb http://archive.raspbian.org/raspbian wheezy main contrib non-free rpi
+# Source repository to add
+deb-src http://archive.raspbian.org/raspbian wheezy main contrib non-free rpi
+deb http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi
+deb http://archive.raspbian.org/raspbian jessie main contrib non-free rpi
+# Source repository to add
+deb-src http://archive.raspbian.org/raspbian jessie main contrib non-free rpi
+```
+
+编辑（新建）`/etc/apt/preferences`：
+
+```
+Package: *
+Pin: release n=wheezy
+Pin-Priority: 900
+Package: *
+Pin: release n=jessie
+Pin-Priority: 300
+Package: *
+Pin: release o=Raspbian
+Pin-Priority: -10
+```
+
+然后执行：
+
+``` bash
+sudo apt-get update
+```
+
+以安装GCC 4.8 为例，执行：
+
+``` bash
+sudo apt-get install -t jessie gcc-4.8 g++-4.8
+```
+
+安装完了之后默认的gcc版本并不是新安装的这个，所以还需执行如下命令以添加alternative configuration：
+
+``` bash
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 20
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+```
+
+如果你的gcc/g++已经有了alternative configuration（默认是没有的），在执行上面的命令之前应当先删除：
+
+``` bash
+sudo update-alternatives --remove-all gcc 
+sudo update-alternatives --remove-all g++
+```
+
+执行如下如下命令可以修改当前alternative configuration：
+
+``` bash
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
+```
+
