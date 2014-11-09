@@ -7,6 +7,11 @@ tags: [reading, notes]
 ---
 {% include JB/setup %}
 
+## 目录 <!-- CONTENTS -->
+
+* 这回生成一个目录，且这行文字会被忽略
+{:toc}
+
 ## 05 Nov {#nov05}
 
 ### I. 手工安装CTAN的宏包 {#Install-CTAN-Manually}

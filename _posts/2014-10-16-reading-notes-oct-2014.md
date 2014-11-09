@@ -7,6 +7,11 @@ tags: [reading, notes]
 ---
 {% include JB/setup %}
 
+## 目录 <!-- CONTENTS -->
+
+* 这回生成一个目录，且这行文字会被忽略
+{:toc}
+
 ## 16 Oct {#oct16}
 
 ### I. 什么样的软件值得信任 {#Reflections-on-Trusting-Trust}
