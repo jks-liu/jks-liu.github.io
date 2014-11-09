@@ -7,7 +7,7 @@ tags: [GoAgent, certificate, CA]
 ---
 {% include JB/setup %}
 
-[直到2014年10月28号，GoAgent一直默认使用公开私钥的根证书](https://github.com/goagent/goagent/commit/77c8e7f131f9eb7d857cded9c0bc2f662e80b78a)。由于GoAgent的广泛使用，估计其还会广泛地存在很长一段时间。如果你能无障碍访问<https://goagent-cert-test.bamsoftware.com/>，请立即删除默认的`CA.crt`。
+[直到2014年10月18号，GoAgent一直默认使用公开私钥的根证书](https://github.com/goagent/goagent/commit/77c8e7f131f9eb7d857cded9c0bc2f662e80b78a)。由于GoAgent的广泛使用，估计其还会广泛地存在很长一段时间。如果你能无障碍访问<https://goagent-cert-test.bamsoftware.com/>，请立即删除默认的`CA.crt`。
 
 本文教你如何使用这个证书给你的网站颁发证书。例子中我会使用`pi.mrliu.org`这个域名。
 
