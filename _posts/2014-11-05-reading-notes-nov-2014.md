@@ -94,11 +94,11 @@ sudo update-alternatives --config g++
 ## 09 Nov {#nov09}
 
 ### III. 一个成功的Git分支模型 {#a-successful-git-branching-model}
-原文：[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
-作者：[Vincent Driessen](http://nvie.com/about/)，on Tuesday, January 05, 2010
+* 原文：[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+* 作者：[Vincent Driessen](http://nvie.com/about/)，on Tuesday, January 05, 2010
 
 本文介绍的版本控制系统Git的一种使用流程，值得一读。本文有多个中文翻译版本。
 
-本文建议在开发中使用如下分支：master，develop，release，feature-xxx，hotfix。同时介绍了Bump Version脚本以及在merge使用`--no-ff`选项。
+本文建议在开发中使用如下分支：master，develop，release，feature-xxx，hotfix。同时介绍了Bump Version脚本，以及在merge时使用`--no-ff`选项。
 
 
