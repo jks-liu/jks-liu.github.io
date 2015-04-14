@@ -82,11 +82,119 @@ x &= ~(1 << 5); /* Un-mask bit 5 */
 所以，如果是作为一个库的话，我们不介意库本身复杂一点，只有其使用简单，对于嵌入式系统可以生成紧凑的代码就是OK的。
 
 ~~~ C
+#define BIT0 0x01
+#define BIT1 0x02
+#define BIT2 0x04
+#define BIT3 0x08
+#define BIT4 0x10
+#define BIT5 0x20
+#define BIT6 0x40
+#define BIT7 0x80
+#define BIT_BYTE(x) (1 << (x))
 
+#define BIT8 0x0100u
+#define BIT9 0x0200u
+#define BIT10 0x0400u
+#define BIT11 0x0800u
+#define BIT12 0x1000u
+#define BIT13 0x2000u
+#define BIT14 0x4000u
+#define BIT15 0x8000u
+#define BIT_U(x) (1u << (x))
+
+#define BIT16 0x00010000ul
+#define BIT17 0x00020000ul
+#define BIT18 0x00040000ul
+#define BIT19 0x00080000ul
+#define BIT20 0x00100000ul
+#define BIT21 0x00200000ul
+#define BIT22 0x00400000ul
+#define BIT23 0x00800000ul
+#define BIT24 0x01000000ul
+#define BIT25 0x02000000ul
+#define BIT26 0x04000000ul
+#define BIT27 0x08000000ul
+#define BIT28 0x10000000ul
+#define BIT29 0x20000000ul
+#define BIT30 0x40000000ul
+#define BIT31 0x80000000ul
+#define BIT_UL(x) (1ul << (x))
+
+#if (__STDC_VERSION__ >= 199901L) /* C99 */
+#define BIT32 0x0000000100000000ull
+#define BIT33 0x0000000200000000ull
+#define BIT34 0x0000000400000000ull
+#define BIT35 0x0000000800000000ull
+#define BIT36 0x0000001000000000ull
+#define BIT37 0x0000002000000000ull
+#define BIT38 0x0000004000000000ull
+#define BIT39 0x0000008000000000ull
+#define BIT40 0x0000010000000000ull
+#define BIT41 0x0000020000000000ull
+#define BIT42 0x0000040000000000ull
+#define BIT43 0x0000080000000000ull
+#define BIT44 0x0000100000000000ull
+#define BIT45 0x0000200000000000ull
+#define BIT46 0x0000400000000000ull
+#define BIT47 0x0000800000000000ull
+#define BIT48 0x0001000000000000ull
+#define BIT49 0x0002000000000000ull
+#define BIT50 0x0004000000000000ull
+#define BIT51 0x0008000000000000ull
+#define BIT52 0x0010000000000000ull
+#define BIT53 0x0020000000000000ull
+#define BIT54 0x0040000000000000ull
+#define BIT55 0x0080000000000000ull
+#define BIT56 0x0100000000000000ull
+#define BIT57 0x0200000000000000ull
+#define BIT58 0x0400000000000000ull
+#define BIT59 0x0800000000000000ull
+#define BIT60 0x1000000000000000ull
+#define BIT61 0x2000000000000000ull
+#define BIT62 0x4000000000000000ull
+#define BIT63 0x8000000000000000ull
+#define BIT_ULL(x) (1ull << (x))
+#endif /* C99 */
+~~~
 
 ## LOG库
 
 本段参考了<http://bbs.21ic.com/icview-43224-1-1.html>。
+
+由于C89不支持可变参数的宏，所以为了模拟可变参数的log，想了各种奇奇怪怪的方法。比如：
+
+~~~ C
+#ifdef NO_LOG
+#define LOG /\
+/
+#else
+#define LOG printf
+#endif
+~~~
+
+经过测试，这种方法在某些编译器上不好用。更好的方法是使用上面的`CONCATENATE`：
+
+~~~ C
+#ifdef NO_LOG
+#define LOG CONCATENATE(/, /)
+#else
+#include <stdio.h>
+#define LOG printf
+#endif
+~~~
+
+这种方法的缺点是，`LOG`只能写在一行。并且可能会有一些微妙的错误，如：
+
+~~~ C
+if (b)
+    LOG("I Love Jks\n");
+
+balabala;
+~~~
+
+如果关闭LOG，`balabala`就会悬挂到`if`下面。当然了，就当是敦促我们养成在所有的`if`中使用大括号的习惯吧。
+
+
 
 
 
