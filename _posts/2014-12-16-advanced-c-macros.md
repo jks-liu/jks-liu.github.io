@@ -18,7 +18,7 @@ tags: [C宏]
 #define inline
 #endif
 
-#ifndef __attribute__
+#if !defined(__GNUC__) && !defined(__attribute__)
 #define __attribute__(x)
 #endif
 ~~~
@@ -30,6 +30,8 @@ tags: [C宏]
 #define inline inline
 #define __attribute__ __attribute__
 ~~~
+
+当然了，最好将这些宏定义放在编译选项中。
 
 ## 记号粘合
 
@@ -192,10 +194,68 @@ if (b)
 balabala;
 ~~~
 
-如果关闭LOG，`balabala`就会悬挂到`if`下面。当然了，就当是敦促我们养成在所有的`if`中使用大括号的习惯吧。
+如果关闭LOG，`balabala`就会悬挂到`if`下面。当然了，就当是敦促我们养成在所有的`if`中使用大括号的习惯吧。如果在LOG中含有副作用的话就更不应该了。
+
+当然，也有人会这么写：
+
+~~~ C
+#ifdef NO_LOG
+#define LOG (void)
+#else
+#include <stdio.h>
+#define LOG printf
+#endif
+~~~
+
+但是，非gcc的编译器可能会出现一大堆的警告，当然好处是`LOG`可以写在多行。
+
+还有人会这么写：
+
+~~~ C
+#define LOG(args) printf args
+~~~
+
+然后`args`自带括号来实现可变参数，我只能说太丑了。
+
+如果你确信你的程序使用在C99或GNU C的环境下的话，下面的宏也许更好:
+
+~~~ C
+#ifdef NO_LOG
+#  if (__STDC_VERSION__ >= 199901L) /* C99 */
+#    define LOG(format, ...)
+#  elif defined(__GNUC__)
+#    define LOG(format, args...)
+#  else
+#    define LOG CONCATENATE(/, /)
+#  endif
+#else
+#  include <stdio.h>
+#  if (__STDC_VERSION__ >= 199901L) /* C99 */
+#    define LOG(...) printf(__VA_ARGS__)
+#  elif defined(__GNUC__)
+#    define LOG(format, args...) printf(format, ##args)
+#  else
+#    define LOG printf
+#  endif
+#endif
+~~~
+
+我们还可以使用可变参数的函数，C89和C99都是支持的，但我们这里不讨论。但有一点值得说一下，如果你需要将类似当前行（即`__LINE__`宏）的这类信息包含在输出中的话，只有可变参数宏可以透明地实现，C89的宏以及函数的实现需要你显式地将其作为参数传入。
 
 
+## 静态断言
 
+~~~ C
+#define STATIC_ASSERT(condition) extern char static_assert_[1 - 2 * !!(condition)]
+~~~
 
+Linux内核中是这么定义的：
 
-C89不支持可变参数的宏，所以在写
+~~~ C
+/* From https://github.com/torvalds/linux/blob/master/include/linux/bug.h */
+#define BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+~~~
+
+上一种定义的缺点是引入了一个不必要的标识符，内核中的定义则可能在非gcc的编译器中引起警告。以上两种定义都不可以定义在失败显示的消息，有兴趣的可以看看内核中的[`compiletime_assert`](https://github.com/torvalds/linux/blob/master/include/linux/compiler.h)宏。
+
+## ASCII Art
