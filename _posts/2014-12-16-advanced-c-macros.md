@@ -259,3 +259,13 @@ Linux内核中是这么定义的：
 上一种定义的缺点是引入了一个不必要的标识符，内核中的定义则可能在非gcc的编译器中引起警告。以上两种定义都不可以定义在失败显示的消息，有兴趣的可以看看内核中的[`compiletime_assert`](https://github.com/torvalds/linux/blob/master/include/linux/compiler.h)宏。
 
 ## ASCII Art
+本节改自《C专家编程》的8.2节，根据位模式构建图形。
+
+~~~ C
+#define ASCII_ART_0 ) * 2
+#define ASCII_ART_1 ) * 2 + 1
+#define ASCII_ART_8BIT_BEGIN ((((((((0
+#define ASCII_ART_16BIT_BEGIN ((((((((((((((((0u
+#define ASCII_ART_32BIT_BEGIN ((((((((((((((((((((((((((((((((0ul
+#define ASCII_ART_64BIT_BEGIN ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0ull
+~~~
