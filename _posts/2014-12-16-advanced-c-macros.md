@@ -122,7 +122,6 @@ x &= ~(1 << 5); /* Un-mask bit 5 */
 #define BIT31 0x80000000ul
 #define BIT_UL(x) (1ul << (x))
 
-#if (__STDC_VERSION__ >= 199901L) /* C99 */
 #define BIT32 0x0000000100000000ull
 #define BIT33 0x0000000200000000ull
 #define BIT34 0x0000000400000000ull
@@ -156,7 +155,6 @@ x &= ~(1 << 5); /* Un-mask bit 5 */
 #define BIT62 0x4000000000000000ull
 #define BIT63 0x8000000000000000ull
 #define BIT_ULL(x) (1ull << (x))
-#endif /* C99 */
 ~~~
 
 ## LOG库
@@ -259,7 +257,7 @@ Linux内核中是这么定义的：
 上一种定义的缺点是引入了一个不必要的标识符，内核中的定义则可能在非gcc的编译器中引起警告。以上两种定义都不可以定义在失败显示的消息，有兴趣的可以看看内核中的[`compiletime_assert`](https://github.com/torvalds/linux/blob/master/include/linux/compiler.h)宏。
 
 ## ASCII Art
-本节改自《C专家编程》的8.2节，根据位模式构建图形。
+本节改自《C专家编程》的8.2节，*根据位模式构建图形*。
 
 ~~~ C
 #define ASCII_ART_0 ) * 2
@@ -269,3 +267,5 @@ Linux内核中是这么定义的：
 #define ASCII_ART_32BIT_BEGIN ((((((((((((((((((((((((((((((((0ul
 #define ASCII_ART_64BIT_BEGIN ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((0ull
 ~~~
+
+使用范例：
