@@ -269,3 +269,8 @@ Linux内核中是这么定义的：
 ~~~
 
 使用范例：
+
+~~~ C
+#define B ASCII_ART_16BIT_BEGIN
+#deifne X ASCII_ART_1
+#define _ ASCII_ART_0
